@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import { Text, Image } from 'react-native';
+import { Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { Ionicons } from '@expo/vector-icons';
+import Stack from './navigation/Stack';
 
 const cacheImages = (images: Array<string>) =>
 	images.map((image: string) => {
@@ -17,17 +19,17 @@ const cacheImages = (images: Array<string>) =>
 const cacheFonts = (fonts: Array<{ 'ionicons': number }>) =>
 	fonts.map((font: { 'ionicons': number }) => Font.loadAsync(font));
 
-export default function App() {
+const App: React.FC = () => {
 	const [ isReady, setIsReady ] = React.useState<boolean>(false);
-	const loadAssets = async () => {
+	const loadAssets = () => {
 		const images = cacheImages([
 			'https://images.unsplash.com/photo-1593359393721-8c301de4bf7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
 			require('./assets/splash.png')
 		]);
 
 		const fonts = cacheFonts([ Ionicons.font ]);
-		console.log(Ionicons.font);
-		return await Promise.all([ ...images, ...fonts ]);
+
+		return Promise.all([ ...images, ...fonts ]);
 	};
 
 	const onFinish = () => setIsReady(true);
@@ -35,8 +37,12 @@ export default function App() {
 	const onError = () => console.error;
 
 	return isReady ? (
-		<Text>App is Ready!</Text>
+		<NavigationContainer>
+			<Stack />
+		</NavigationContainer>
 	) : (
 		<AppLoading startAsync={loadAssets} onFinish={onFinish} onError={onError} />
 	);
-}
+};
+
+export default App;
