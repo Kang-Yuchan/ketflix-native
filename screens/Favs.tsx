@@ -4,16 +4,16 @@ import { NavigationStackProp } from '@react-navigation/stack';
 
 type NavigateProps = {};
 
-type DetailProps = {
+type FavsProps = {
 	navigation: NavigationStackProp<NavigateProps>;
 };
 
-const Detail: React.FC<DetailProps> = ({ navigation }: DetailProps) => {
+const Favs: React.FC<FavsProps> = ({ navigation }: FavsProps) => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Detail Screen</Text>
+			<Text>Favorites Screen</Text>
 		</View>
 	);
 };
 
-export default Detail;
+export default Favs;

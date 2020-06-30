@@ -4,16 +4,16 @@ import { NavigationStackProp } from '@react-navigation/stack';
 
 type NavigateProps = {};
 
-type DetailProps = {
+type SearchProps = {
 	navigation: NavigationStackProp<NavigateProps>;
 };
 
-const Detail: React.FC<DetailProps> = ({ navigation }: DetailProps) => {
+const Search: React.FC<SearchProps> = ({ navigation }: SearchProps) => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Detail Screen</Text>
+			<Text>Search Screen</Text>
 		</View>
 	);
 };
 
-export default Detail;
+export default Search;

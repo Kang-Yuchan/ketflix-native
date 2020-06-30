@@ -8,7 +8,7 @@ type HomeProps = {
 	navigation: NavigationStackProp<NavigateProps>;
 };
 
-const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
+const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
 	const navigateFunc = React.useCallback(
 		(screenName: string) => () => {
 			return navigation.navigate(screenName);
@@ -18,10 +18,9 @@ const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
 
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Home Screen</Text>
-			<Button onPress={navigateFunc('Detail')} title="Go Detail" />
+			<Text>Movies Screen</Text>
 		</View>
 	);
 };
 
-export default Home;
+export default Movies;

@@ -4,16 +4,16 @@ import { NavigationStackProp } from '@react-navigation/stack';
 
 type NavigateProps = {};
 
-type DetailProps = {
+type TvProps = {
 	navigation: NavigationStackProp<NavigateProps>;
 };
 
-const Detail: React.FC<DetailProps> = ({ navigation }: DetailProps) => {
+const Tv: React.FC<TvProps> = ({ navigation }: TvProps) => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Detail Screen</Text>
+			<Text>TV Screen</Text>
 		</View>
 	);
 };
 
-export default Detail;
+export default Tv;

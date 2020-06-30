@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/kang-yuchan/.nodenv/versions/12.18.0/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js add @react-navigation/native
+  /Users/kang-yuchan/.nodenv/versions/12.18.0/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js add expo-splash-screen@~0.3.1
 
 PATH: 
   /Users/kang-yuchan/.nodenv/versions/12.18.0/bin:/usr/local/Cellar/nodenv/1.3.1/libexec:/Users/kang-yuchan/.rvm/gems/ruby-2.5.1/bin:/Users/kang-yuchan/.rvm/gems/ruby-2.5.1@global/bin:/Users/kang-yuchan/.rvm/rubies/ruby-2.5.1/bin:/Users/kang-yuchan/.nodenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/kang-yuchan/.rvm/gems/ruby-2.5.1/bin:/Users/kang-yuchan/.rvm/gems/ruby-2.5.1@global/bin:/Users/kang-yuchan/.rvm/rubies/ruby-2.5.1/bin:/Users/kang-yuchan/.nodenv/shims:/Users/kang-yuchan/.rvm/bin:/Users/kang-yuchan/.rvm/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/kang-yuchan/Documents/ketflix-native/node_modules/@react-navigation/core/node_modules/escape-string-regexp/index.d.ts'
+  Error: EACCES: permission denied, unlink '/Users/kang-yuchan/Documents/ketflix-native/node_modules/@react-navigation/core/node_modules/escape-string-regexp/index.js'
 
 npm manifest: 
   {
@@ -42,7 +42,8 @@ npm manifest:
   		"react-native-reanimated": "~1.9.0",
   		"react-native-safe-area-context": "3.0.2",
   		"react-native-screens": "~2.9.0",
-  		"react-native-web": "~0.11.7"
+  		"react-native-web": "~0.11.7",
+  		"react-navigation-stack": "^2.8.2"
   	},
   	"devDependencies": {
   		"@babel/core": "^7.8.6",
@@ -4306,6 +4307,14 @@ Lockfile:
       stacktrace-parser "^0.1.3"
       use-subscription "^1.0.0"
       whatwg-fetch "^3.0.0"
+  
+  react-navigation-stack@^2.8.2:
+    version "2.8.2"
+    resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-2.8.2.tgz#e982bbf14a28b23c323b2d4a6fce4e9754b066e6"
+    integrity sha512-e1VtlF6NDdzgKmnqE3ucgizrgUWUakdT+r7htQU24iG8AJUFQEw+tH4Lfyj0St6i8/RLckXm+o9VgYJT+pNiRw==
+    dependencies:
+      color "^3.1.2"
+      react-native-iphone-x-helper "^1.2.1"
   
   react-refresh@^0.4.0:
     version "0.4.3"

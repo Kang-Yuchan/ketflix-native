@@ -22,10 +22,7 @@ const cacheFonts = (fonts: Array<{ 'ionicons': number }>) =>
 const App: React.FC = () => {
 	const [ isReady, setIsReady ] = React.useState<boolean>(false);
 	const loadAssets = () => {
-		const images = cacheImages([
-			'https://images.unsplash.com/photo-1593359393721-8c301de4bf7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-			require('./assets/splash.png')
-		]);
+		const images = cacheImages([]);
 
 		const fonts = cacheFonts([ Ionicons.font ]);
 
