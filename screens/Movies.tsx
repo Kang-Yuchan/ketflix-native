@@ -2,10 +2,8 @@ import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 import { NavigationStackProp } from '@react-navigation/stack';
 
-type NavigateProps = {};
-
 type HomeProps = {
-	navigation: NavigationStackProp<NavigateProps>;
+	navigation: NavigationStackProp<{}>;
 };
 
 const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
@@ -19,6 +17,7 @@ const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
 	return (
 		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 			<Text>Movies Screen</Text>
+			<Button onPress={navigateFunc('Detail')} title="Movie Detail" />
 		</View>
 	);
 };
