@@ -1,22 +1,26 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationStackProp } from '@react-navigation/stack';
+import { moviesAPI } from '../api';
 
 type HomeProps = {
 	navigation: NavigationStackProp<{}>;
 };
 
 const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
-	const navigateFunc = React.useCallback(
-		(screenName: string) => () => {
-			return navigation.navigate(screenName);
-		},
-		[]
-	);
+	const getApiData = async () => {
+		const [ nowPlaying, nowPlayingError ] = await moviesAPI.nowPlaying();
+		const [ popular, popularError ] = await moviesAPI.popular();
+		const [ upComing, upComingError ] = await moviesAPI.upComing();
+	};
+
+	React.useEffect(() => {
+		getApiData();
+	}, []);
 
 	return (
 		<View style={{ flex: 1, backgroundColor: 'black' }}>
-			<Button onPress={navigateFunc('Detail')} title="Movie Detail" />
+			<Text>Movies</Text>
 		</View>
 	);
 };
