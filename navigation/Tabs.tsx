@@ -5,6 +5,8 @@ import Tv from '../screens/Tv';
 import Search from '../screens/Search';
 import Favs from '../screens/Favs';
 import { NavigationStackProp } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 type TabsNavigatorProps = {
 	Movies: React.FC;
@@ -12,6 +14,10 @@ type TabsNavigatorProps = {
 	Search: React.FC;
 	Favorites: React.FC;
 };
+
+type TabBarIconProps = {
+  focused: boolean;
+}
 
 const Tabs = createBottomTabNavigator<TabsNavigatorProps>();
 
@@ -28,9 +34,36 @@ export default ({ navigation, route }: NavigationStackProp<{}>) => {
       });
 		},
 		[ route ]
-	);
+  );
+  
+  const screenOptions = React.useCallback(({ route })  => ({
+    tabBarIcon: ({ focused }: TabBarIconProps) => {
+      let iconName = Platform.OS === "ios" ? "ios-" : "md-";
+      if (route.name === "Movies") {
+       iconName += "film";
+      } else if(route.name === "TV") {
+       iconName += "tv";
+      } else if(route.name === "Search") {
+       iconName += "search";
+      } else if (route.name === "Favorites") {
+       iconName += "heart";
+      }
+      return (
+        <Ionicons name={iconName} color={focused ? "white" : "grey"} size={26} />
+      )
+    }
+  }), [])
+
 	return (
-		<Tabs.Navigator>
+    <Tabs.Navigator
+    screenOptions={screenOptions} 
+    tabBarOptions={{
+      showLabel: false,
+      style: {
+        backgroundColor: 'black',
+        borderTopColor: 'black'
+      }
+    }}>
 			<Tabs.Screen name="Movies" component={Movies} />
 			<Tabs.Screen name="TV" component={Tv} />
 			<Tabs.Screen name="Search" component={Search} />
