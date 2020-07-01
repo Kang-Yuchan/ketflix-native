@@ -15,8 +15,7 @@ const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
 	);
 
 	return (
-		<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-			<Text>Movies Screen</Text>
+		<View style={{ flex: 1, backgroundColor: 'black' }}>
 			<Button onPress={navigateFunc('Detail')} title="Movie Detail" />
 		</View>
 	);

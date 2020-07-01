@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import { Image } from 'react-native';
+import { Image, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Asset } from 'expo-asset';
 import { Ionicons } from '@expo/vector-icons';
@@ -34,9 +34,12 @@ const App: React.FC = () => {
 	const onError = () => console.error;
 
 	return isReady ? (
-		<NavigationContainer>
-			<Stack />
-		</NavigationContainer>
+		<React.Fragment>
+			<NavigationContainer>
+				<Stack />
+			</NavigationContainer>
+			<StatusBar barStyle="light-content" />
+		</React.Fragment>
 	) : (
 		<AppLoading startAsync={loadAssets} onFinish={onFinish} onError={onError} />
 	);

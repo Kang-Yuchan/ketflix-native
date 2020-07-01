@@ -15,14 +15,17 @@ type TabsNavigatorProps = {
 
 const Tabs = createBottomTabNavigator<TabsNavigatorProps>();
 
-const getRouteName = (route: NavigationStackProp<{}>) => {
+const getRouteName = (route: NavigationStackProp<{}>): string => {
   return route?.state?.routeNames[route.state.index] || 'Movies'
 }
 
 export default ({ navigation, route }: NavigationStackProp<{}>) => {
 	React.useLayoutEffect(
 		() => {
-			navigation.setOptions({ title: getRouteName(route) });
+      const name = getRouteName(route);
+			navigation.setOptions({
+         title: name,
+      });
 		},
 		[ route ]
 	);
