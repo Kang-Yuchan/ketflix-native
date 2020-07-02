@@ -1,23 +1,25 @@
 import * as React from "react";
-import { View, Text } from "react-native";
 import { NavigationStackProp } from "@react-navigation/stack";
-import { moviesAPI } from "../api";
+import { moviesAPI } from "../../api";
+import MoviesPresenter from "./MoviesPresenter";
 
 type HomeProps = {
   navigation: NavigationStackProp<{}>;
 };
 
-type MoviesState = {
+export interface MoviesState {
+  loading: boolean;
   nowPlaying: Array<{}>;
   nowPlayingError: string | null;
   popular: Array<{}>;
   popularError: string | null;
   upComing: Array<{}>;
   upComingError: string | null;
-};
+}
 
-const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
+const MoviesContainer: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
   const [movies, setMovies] = React.useState<MoviesState>({
+    loading: true,
     nowPlaying: [],
     nowPlayingError: null,
     popular: [],
@@ -31,6 +33,7 @@ const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
     const [popular, popularError] = await moviesAPI.popular();
     const [upComing, upComingError] = await moviesAPI.upComing();
     setMovies({
+      loading: false,
       nowPlaying,
       nowPlayingError,
       popular,
@@ -44,11 +47,7 @@ const Movies: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
     getApiData();
   }, []);
 
-  return (
-    <View style={{ flex: 1, backgroundColor: "black" }}>
-      <Text style={{ color: "white" }}>{movies.nowPlaying?.length}</Text>
-    </View>
-  );
+  return <MoviesPresenter movies={movies} />;
 };
 
-export default Movies;
+export default MoviesContainer;
